@@ -1,0 +1,6 @@
+2013-03-25 Heiko Westermann  <hwt3@gmx.de>
+
+	* initial release v 0.0.1 experimental
+    * feature: service to check for open resubmissions of current user in 'tstamp' of 'tt_content' records
+    * feature: hook for displaying backendwarning if necessary
+    * feature: option to configure time for resubmit in em
