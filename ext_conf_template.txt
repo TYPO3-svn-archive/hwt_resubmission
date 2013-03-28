@@ -1,0 +1,8 @@
+  # cat=basic/enable; type=int+; label=Resubmission time: time until user has to be informed
+resubmissionTime =
+  # cat=basic/enable; type=int+; label=Enable User Mail
+enableUserMail = 0
+  # cat=basic/enable; type=int+; label=Enable Admin Mail
+enableAdminMail = 0
+  # cat=basic/enable; type=string; label=Resubmission admins: comma separated uid's of be users.
+resubmissionAdmins =
