@@ -1,6 +1,14 @@
+2013-03-28 Heiko Westermann  <hwt3@gmx.de>
+
+	* release v0.0.1 experimental, rev01
+    * major feature #46743: be module for open resubmissions
+    * feature #46745: check for open resubmission in 'pages'
+    * feature #46744: page info where open resubmission of 'tt_content' resides
+
+
 2013-03-25 Heiko Westermann  <hwt3@gmx.de>
 
-	* initial release v 0.0.1 experimental
+	* initial release v0.0.1 experimental
     * feature: service to check for open resubmissions of current user in 'tstamp' of 'tt_content' records
     * feature: hook for displaying backendwarning if necessary
     * feature: option to configure time for resubmit in em

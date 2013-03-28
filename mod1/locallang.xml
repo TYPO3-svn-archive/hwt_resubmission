@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;web_txhwtresubmissionM1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">Resubmission</label>
+			<label index="function1">Open Resubmissions</label>
+			<label index="function2">Function #2</label>
+			<label index="function3">Function #3</label>
+			<label index="error.resubmissionTime">No resubmission time set. Please configure it in the extension manager.</label>
+            <label index="section.moduleConfiguration">Module Configuration</label>
+            <label index="section.openResubmissionsPages">Resubmission - Pages</label>
+            <label index="section.openResubmissionsContent">Resubmission - Content Elements</label>
+            <label index="label.openResubmissions">Open resubmissions:</label>
+            <label index="label.noOpenResubmissions">No open resubmissions found.</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="title">Wiedervorlage</label>
+			<label index="function1">Offene Wiedervorlagen</label>
+			<label index="function2">Function #2</label>
+			<label index="function3">Function #3</label>
+			<label index="error.resubmissionTime">Keine Wiedervorlage-Zeit gesetzt. Bitte im Extension-Manager konfigurieren.</label>
+            <label index="section.moduleConfiguration">Modul-Konfiguration</label>
+            <label index="section.openResubmissionsPages">Wiedervorlage - Seiten</label>
+            <label index="section.openResubmissionsContent">Wiedervorlage - Inhaltselemente</label>
+            <label index="label.openResubmissions">Offene Wiedervorlagen:</label>
+            <label index="label.noOpenResubmissions">Keine offenen Wiedervorlagen gefunden.</label>
+		</languageKey>
+	</data>
+</T3locallang>

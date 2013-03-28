@@ -62,22 +62,28 @@ class tx_hwtresubmission_sv1 extends t3lib_svbase {
      * @param   int $resubmissionTime time after which user has to resubmit
 	 * @return	bool/array $rows db records with open resubmission
 	 */
-	public function getOpenResubmissions($userId, $resubmissionTime) {
+	public function getOpenResubmissions($userId, $resubmissionTime, $selectFields='tt_content.*, pages.title', $limit=50, $table='tt_content') {
         $rows = FALSE;
 
         if((int)$resubmissionTime > 0) {
-            $selectConf['selectFields'] = 'uid, header';
-            $selectConf['fromTable'] = 'tt_content';
-            $selectConf['where'] = '(tstamp+' . (int)$resubmissionTime . ')<=' . time();
+            $selectConf['selectFields'] = $selectFields;
+            $selectConf['fromTable'] = $table;
+            $selectConf['where'] = '(' . $selectConf['fromTable'] . '.tstamp+' . (int)$resubmissionTime . ')<=' . time();
             if($userId) {
-                $selectConf['where'] .= ' AND cruser_id=' . (int)$userId;
+                $selectConf['where'] .= ' AND ' . $selectConf['fromTable'] . '.cruser_id=' . (int)$userId;
+            }
+            if($selectConf['fromTable']!='pages') {
+                $selectConf['fromTable'] .= ' LEFT JOIN pages ON pages.uid=' . $table . '.pid';
+            }
+            if($limit) {
+                $selectConf['limit'] = (int)$limit;
             }
 
-            $selectConf['limit'] = 5;
-
             $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($selectConf['selectFields'], $selectConf['fromTable'], $selectConf['where'], $selectConf['groupBy'], $selectConf['orderBy'], $selectConf['limit']);
-//    var_dump($GLOBALS['TYPO3_DB']->SELECTquery($selectConf['selectFields'], $selectConf['fromTable'], $selectConf['where'], $selectConf['groupBy'], $selectConf['orderBy'], $selectConf['limit']));
+//if($table!='pages') {
+//            var_dump($GLOBALS['TYPO3_DB']->SELECTquery($selectConf['selectFields'], $selectConf['fromTable'], $selectConf['where'], $selectConf['groupBy'], $selectConf['orderBy'], $selectConf['limit']));
 //    die();
+//}
             $rows = array();
             while($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
                 $rows[] = $row;

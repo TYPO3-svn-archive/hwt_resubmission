@@ -48,14 +48,20 @@ class tx_hwtresubmission_backendwarnings {
 	 */
 	public function displayWarningMessages_postProcess(array &$warnings) {
         $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['hwt_resubmission']);
-        $openResubmissions = tx_hwtresubmission_sv1::getOpenResubmissions($GLOBALS[$BE_USER]->user['uid'], $extConf['resubmissionTime']);
+
+        $openResubmissions = tx_hwtresubmission_sv1::getOpenResubmissions($GLOBALS['BE_USER']->user['uid'], $extConf['resubmissionTime'], 'pages.uid', 1, 'pages');
+        if(!$openResubmissions) {
+            $openResubmissions = tx_hwtresubmission_sv1::getOpenResubmissions($GLOBALS['BE_USER']->user['uid'], $extConf['resubmissionTime'], 'tt_content.uid', 1);
+        }
 
         if($openResubmissions) {
-            $warnings['hwtresubmission'] = '[EXT: hwt_resubmission] Open Resubmissions:<br />';
-            foreach($openResubmissions as $value) {
+            $warnings['hwtresubmission'] = '[EXT: hwt_resubmission] Open Resubmissions!<br />Please go to ';
+            /*foreach($openResubmissions as $value) {
                 $warnings['hwtresubmission'] .= '- tt_content[' . $value['uid'] . '] ' . $value['header'] . '<br />';
-            }
-            $warnings['hwtresubmission'] .= '<a href="javascript:top.goToModule(\'web_list\',1)">zum List-Modul</a>';
+            }*/
+//         var_dump($openResubmissions);
+//         die();
+            $warnings['hwtresubmission'] .= '<a href="javascript:top.goToModule(\'web_txhwtresubmissionM1\',1)">Resubmission Module</a> to check them.';
         }
 	}
 }
